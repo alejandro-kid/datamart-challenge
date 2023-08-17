@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: "Tech Datamart Challenge API"
+  description: An API to solve some challenges for Tech Datamart
+  version: 1.0.0
+
+paths:
+
+  /:
+    get:
+      operationId: api.services.main.welcome
+      tags:
+        - home
+      summary: Retrieves welcome message
+      description: Displays welcome message
+      responses:
+        200:
+          description: See a welcome message
+
+  /health:
+    get:
+      operationId: api.services.main.health
+      tags:
+        - health
+      summary: Retrieves health status of this application
+      description: Perform health check on flask api
+      responses:
+        200:
+          description: Application is functioning normally
