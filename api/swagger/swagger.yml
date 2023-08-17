@@ -27,3 +27,90 @@ paths:
       responses:
         200:
           description: Application is functioning normally
+
+  /merge_arrays:
+      post:
+        operationId: api.services.algorithms.merge_array_endpoint
+        summary: Ansewr a question about upload document
+        description: Get a response based in the knowledge adquired with upload file
+        tags:
+          - "ALGORITHMS"
+        requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    lista_1:
+                      type: array
+                      items:
+                        type: integer
+                    lista_2:
+                      type: array
+                      items:
+                        type: integer
+                  required:
+                    - lista_1
+                    - lista_2
+
+        responses:
+          '200':    # status code
+            description: A JSON with information about upload file
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    message:
+                      type: string
+                    mixed_ordered_list:
+                      type: array
+                      items:
+                        type: integer
+          '404':
+            description: Not found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not found
+          '406':
+            description: Not acceptable
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not acceptable
+          '429':
+            description: Too many requests
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Too many requests
+          'default':
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    error_message:
+                      type: string
+                      example: Unexpected error
