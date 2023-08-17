@@ -30,7 +30,7 @@ paths:
 
   /merge_arrays:
       post:
-        operationId: api.services.algorithms.merge_array_endpoint
+        operationId: api.services.algorithms.merge_arrays_endpoint
         summary: Ansewr a question about upload document
         description: Get a response based in the knowledge adquired with upload file
         tags:
@@ -42,17 +42,17 @@ paths:
                 schema:
                   type: object
                   properties:
-                    lista_1:
+                    list_1:
                       type: array
                       items:
                         type: integer
-                    lista_2:
+                    list_2:
                       type: array
                       items:
                         type: integer
                   required:
-                    - lista_1
-                    - lista_2
+                    - list_1
+                    - list_2
 
         responses:
           '200':    # status code
