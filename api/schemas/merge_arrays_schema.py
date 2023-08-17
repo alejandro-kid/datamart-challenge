@@ -1,4 +1,4 @@
-merge_array_schema = {
+merge_arrays_schema = {
     "type": "object",
     "properties": {
         "list_1": {
