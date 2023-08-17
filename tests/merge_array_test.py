@@ -10,7 +10,7 @@ unordered = (5, 12, 1, 8, 7, 3, 9, 6, 10, 4)
 def test_merge_array() -> None:
 
     mixed_ordered_list = merge_array(ordered_1, ordered_2)
-    assert mixed_ordered_list == [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    assert mixed_ordered_list == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                                   13, 14, 15, 16, 17, 18, 19, 20]
 
 def test_merge_array_endpoint(client) -> None:
