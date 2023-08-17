@@ -1,3 +1,4 @@
+import json
 import pytest
 
 from api.app import create_app
@@ -32,3 +33,9 @@ def client(app):
     :return: Flask app client
     """
     yield app.test_client()
+
+
+def helper(json_info)->any:
+    for info in json_info:
+        first_row = info.decode("utf-8")
+        return json.loads(first_row)
