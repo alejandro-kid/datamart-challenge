@@ -50,7 +50,7 @@ def is_sorted(list_1: list) -> bool:
     return all(a <= b for a, b in zip(list_1, list_1[1:]))
 
 
-def median_endpoint() -> Response:
+def find_median_endpoint() -> Response:
     try:
         request_data = request.get_json()
         jsonschema.validate(request_data, median_schema)

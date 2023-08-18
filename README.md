@@ -23,3 +23,14 @@ The optimal solution for this problem is to use the **merge** algorithm, this al
 
 The endpoint for this algorithm receives a JSON with two lists, no matter what kind of data is stored in these lists, the logic of the endpoint do validations to check the data is correct. After that, the endpoint checks if the lists are unordered and then sorts them using the **sorted** algorithm, this algorithm is more efficient than the **merge** algorithm in unordered lists.
 
+## Problem 2
+
+Write a function called find_median that accepts an array of integers as a parameter and returns the median of the array.
+
+### Regular Solution
+
+I am not going to reinvent the wheel, the median of a set of numbers is an operation well-known to all. Python through its **statistics** module (library) provides an implementation of this algorithm in its medium variant of the two in the middle, which has an algorithmic complexity of **O(n)** and is also efficient in terms of resource consumption.
+
+### Endpoint
+
+The endpoint to process the request does not have something weird. Checking if the list provided by the user is a number list is the only validation implemented.

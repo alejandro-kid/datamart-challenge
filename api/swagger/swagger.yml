@@ -117,7 +117,7 @@ paths:
 
   /median:
       post:
-        operationId: api.services.algorithms.median_endpoint
+        operationId: api.services.algorithms.find_median_endpoint
         summary: An endpoint to get the median of a number set.
         description: The endpoint uses the **middle of the middle two** classic algorithm to calculate the median of a number set.
         tags:
