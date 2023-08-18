@@ -25,24 +25,40 @@ def test_binary_search_endpoint(client) -> None:
     assert response_info["success"] is True
     assert response_info["found"] is True
 
+def test_binary_search_endpoint_not_found(client) -> None:
 
-def test_number_found():
+    response = client.post('/binary_search', data=json.dumps(dict(
+        ordered_list=number_list,
+        element=9.5
+    )), mimetype='application/json')
+    
+    response_info = helper(response.response)
+
+    assert response.status_code == 200
+    assert response.content_type == 'application/json'
+    assert response_info["message"] == "Successfully searched"
+    assert response_info["success"] is True
+    assert response_info["found"] is False
+    
+
+
+def test_number_found() -> None:
         ordered_list = [1, 3, 5, 7, 9]
         element = 5
 
         assert binary_search(ordered_list, element)
 
-def test_number_not_found_smaller():
+def test_number_not_found_smaller() -> None:
     ordered_list = [1, 3, 5, 7, 9]
     element = 0
 
-    assert binary_search(ordered_list, element) is not True
+    assert binary_search(ordered_list, element) is False
 
-def test_number_not_found_greater():
+def test_number_not_found_greater() -> None:
     ordered_list = [1, 3, 5, 7, 9]
     element = 10
 
-    assert binary_search(ordered_list, element) is not True
+    assert binary_search(ordered_list, element) is False
 
 @given(lists(elements=integers(), min_size=1, max_size=20),
        integers())
