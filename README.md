@@ -44,3 +44,15 @@ Write a class called BinaryTree that implements a binary search tree. The class 
 A binary tree is a non-linear data structure in which each node can point to one or at most two nodes. Binary search trees are a special type of binary tree whose characteristic lies in the ordered way of inserting its elements, thus facilitating the search for a particular node.
 The main functions implemented by the author were the following: insert, minValueNode, maxValueNode, delete, find, and inorder.
 For insertion, deletion, and search (includes minValueNode and maxValueNode) the complexity is **O(log n)**. Most of the methods or functions in a binary search tree have a low complexity of **O(log n)**, due to their characteristics such as well-known data structure, in such a way that unless the complete tree has to be returned (ordered or whatever way), it will not have to be traversed completely. However, traversing the tree in its entirety does not have a complexity greater than **O(n)**, with **n**, of course, being the number of nodes that make up the said tree. The deletion of an element is a special case of traversal of the entire tree in its worst case since it has to be re-ordered when a node is deleted, and in the best case, it has a constant complexity of **O(1)** when said node has no children or only 1 child.
+
+## Problem 7
+
+Write a function called remove_duplicates that accepts a list as a parameter and returns a new list with no duplicate elements.
+
+### Solution
+
+The solution here is simple, the author only uses a data structure of Python language. Sets are unordered collections of unique elements. So the only that we need to do is convert any list to a set.
+
+```python
+filtered_list = set(dirty_list)
+```
