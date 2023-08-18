@@ -30,7 +30,7 @@ paths:
 
   /merge_arrays:
       post:
-        operationId: api.services.algorithms.merge_arrays_endpoint
+        operationId: api.services.endpoints.merge_arrays_endpoint
         summary: Merge two lists and return a new ordered list.
         description: A function that use merge algorithm to merge two ordered lists.
         tags:
@@ -117,7 +117,7 @@ paths:
 
   /median:
       post:
-        operationId: api.services.algorithms.find_median_endpoint
+        operationId: api.services.endpoints.find_median_endpoint
         summary: An endpoint to get the median of a number set.
         description: The endpoint uses the **middle of the middle two** classic algorithm to calculate the median of a number set.
         tags:
@@ -197,7 +197,7 @@ paths:
 
   /remove_duplicates:
       post:
-        operationId: api.services.algorithms.remove_duplicates_endpoint
+        operationId: api.services.endpoints.remove_duplicates_endpoint
         summary: An endpoint to remove duplicate data.
         description: Given a data set, the endpoint filters that data and returns a unique data set in that set.
         tags:
@@ -275,7 +275,7 @@ paths:
 
   /binary_search:
       post:
-        operationId: api.services.algorithms.binary_search_endpoint
+        operationId: api.services.endpoints.binary_search_endpoint
         summary: An endpoint to find an element in an ordered list.
         description: Given a data set, the endpoint use a binary search to find the provided element in the data set.
         tags:
