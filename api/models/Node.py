@@ -94,10 +94,21 @@ class Node(object):
         
         return found
 
+
     def inorder(self):
-        if self:
-            if self.leftChild:
-                self.leftChild.inorder()
-            print(str(self.data), end = ' ')
-            if self.rightChild:
-                self.rightChild.inorder()
+        stack = []
+        result = []
+        current = self
+
+        while True:
+            if current is not None:
+                stack.append(current)
+                current = current.leftChild
+            elif(stack):
+                current = stack.pop()
+                result.append(current.data)
+                current = current.rightChild
+            else:
+                break
+
+        return result

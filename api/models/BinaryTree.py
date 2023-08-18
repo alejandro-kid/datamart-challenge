@@ -23,8 +23,6 @@ class BinaryTree(object):
             return False
 
 
-    def inorder(self):
-        print()
-        if self.root is not None:
-            print('Inorder: ')
-            self.root.inorder()
+    def inorder_list(self):
+
+        return self.root.inorder()
