@@ -1,8 +1,11 @@
 import jsonschema
+import statistics
 
 from api.schemas.merge_arrays_schema import merge_arrays_schema
+from api.schemas.median_schema import median_schema
 from flask import Response, request, json
 from heapq import merge
+
 
 def merge_arrays_endpoint() -> Response:
     try:
@@ -42,5 +45,34 @@ def merge_arrays_endpoint() -> Response:
 def merge_array(list_1: list, list_2: list) -> list:
     return list(merge(list_1, list_2))
 
+
 def is_sorted(list_1: list) -> bool:
     return all(a <= b for a, b in zip(list_1, list_1[1:]))
+
+
+def median_endpoint() -> Response:
+    try:
+        request_data = request.get_json()
+        jsonschema.validate(request_data, median_schema)
+
+        number_list = request_data["list"]
+
+        median = statistics.median(number_list)
+
+        data = {
+            "success": True,
+            "message": "Successfully calc",
+            "median": median
+        }
+        response = Response(json.dumps(data), 201, mimetype="application/json")
+
+    except jsonschema.exceptions.ValidationError as exc:
+        response = Response(str(exc.message), 400, mimetype="application/json")
+    except Exception as e:
+        data = {
+            "success": False,
+            "error_message": str(e)
+        }
+        response = Response(json.dumps(data), 500, mimetype='application/json')
+
+    return response
