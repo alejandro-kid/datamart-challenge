@@ -34,3 +34,13 @@ I am not going to reinvent the wheel, the median of a set of numbers is an opera
 ### Endpoint
 
 The endpoint to process the request does not have something weird. Checking if the list provided by the user is a number list is the only validation implemented.
+
+## Problem 3
+
+Write a class called BinaryTree that implements a binary search tree. The class must have methods to insert, find, and must be able to print the tree in ascending order. Analyze the computational complexity of each operation implemented in your solution.
+
+### Solution
+
+A binary tree is a non-linear data structure in which each node can point to one or at most two nodes. Binary search trees are a special type of binary tree whose characteristic lies in the ordered way of inserting its elements, thus facilitating the search for a particular node.
+The main functions implemented by the author were the following: insert, minValueNode, maxValueNode, delete, find and inorder.
+For insertion, deletion and search (includes minValueNode and maxValueNode) the complexity is **O(log n)**. To print the values of the tree, the complexity is **O(n)** where n is the number of nodes that the tree has.

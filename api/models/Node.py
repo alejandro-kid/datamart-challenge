@@ -5,22 +5,24 @@ class Node(object):
         self.rightChild = None
 
     def insert(self, data):
+
+        inserted = True
+
         if self.data == data:
-            return False 
+            inserted = False
 
         elif data < self.data:
             if self.leftChild:
-                return self.leftChild.insert(data)
+                inserted = self.leftChild.insert(data)
             else:
                 self.leftChild = Node(data)
-                return True
-
         else:
             if self.rightChild:
-                return self.rightChild.insert(data)
+                inserted = self.rightChild.insert(data)
             else:
                 self.rightChild = Node(data)
-                return True
+
+        return inserted
 
     def minValueNode(self, node):
         current = node

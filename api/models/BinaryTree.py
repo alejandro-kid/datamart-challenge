@@ -22,20 +22,9 @@ class BinaryTree(object):
         else:
             return False
 
-    def preorder(self):
-        if self.root is not None:
-            print()
-            print('Preorder: ')
-            self.root.preorder()
 
     def inorder(self):
         print()
         if self.root is not None:
             print('Inorder: ')
             self.root.inorder()
-
-    def postorder(self):
-        print()
-        if self.root is not None:
-            print('Postorder: ')
-            self.root.postorder()
