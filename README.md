@@ -21,7 +21,7 @@ The optimal solution for this problem is to use the **merge** algorithm, this al
 
 #### Endpoint
 
-The endpoint for this algorithm receives a JSON with two lists, no matter what kind of data is stored in these lists, the logic of the endpoint do validations to check the data is correct. After that, the endpoint checks if the lists are unordered and then sorts them using the **sorted** algorithm, this algorithm is more efficient than the **merge** algorithm in unordered lists.
+The endpoint for this algorithm receives a JSON with two lists, no matter what kind of data is stored in these lists, the logic of the endpoint do validations to check the data is correct. After that, the endpoint checks if the lists are unordered and then sorts them using the **sorted** algorithm, this algorithm is more efficient than the **merge** algorithm in unordered lists. The algorithmic complexity of the function to determine if the list is ordered or not is **O(n)**. This is because the function loops through number_list twice, once to get the items from first to last, and again to get the items from second to last. Each iteration of the function takes **O(1)** time, so the total complexity of the function is **O(n)**.
 
 ## Problem 2
 

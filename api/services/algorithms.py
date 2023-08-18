@@ -46,8 +46,8 @@ def merge_array(list_1: list, list_2: list) -> list:
     return list(merge(list_1, list_2))
 
 
-def is_sorted(list_1: list) -> bool:
-    return all(a <= b for a, b in zip(list_1, list_1[1:]))
+def is_sorted(number_list: list) -> bool:
+    return all(a <= b for a, b in zip(number_list, number_list[1:]))
 
 
 def find_median_endpoint() -> Response:
