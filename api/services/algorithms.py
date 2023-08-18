@@ -3,6 +3,7 @@ import statistics
 
 from api.schemas.merge_arrays_schema import merge_arrays_schema
 from api.schemas.median_schema import median_schema
+from api.schemas.remove_duplicates import remove_duplicates_schema
 from flask import Response, request, json
 from heapq import merge
 
@@ -63,6 +64,34 @@ def find_median_endpoint() -> Response:
             "success": True,
             "message": "Successfully calc",
             "median": median
+        }
+        response = Response(json.dumps(data), 200, mimetype="application/json")
+
+    except jsonschema.exceptions.ValidationError as exc:
+        response = Response(str(exc.message), 400, mimetype="application/json")
+    except Exception as e:
+        data = {
+            "success": False,
+            "error_message": str(e)
+        }
+        response = Response(json.dumps(data), 500, mimetype='application/json')
+
+    return response
+
+
+def remove_duplicates_endpoint() -> Response:
+    try:
+        request_data = request.get_json()
+        jsonschema.validate(request_data, remove_duplicates_schema)
+
+        dirty_list = request_data["list"]
+
+        filtered_list = set(dirty_list)
+
+        data = {
+            "success": True,
+            "message": "Successfully clean",
+            "filtered_list": list(filtered_list)
         }
         response = Response(json.dumps(data), 200, mimetype="application/json")
 
