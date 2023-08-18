@@ -272,3 +272,86 @@ paths:
                     error_message:
                       type: string
                       example: Unexpected error
+
+  /binary_search:
+      post:
+        operationId: api.services.algorithms.binary_search_endpoint
+        summary: An endpoint to find an element in an ordered list.
+        description: Given a data set, the endpoint use a binary search to find the provided element in the data set.
+        tags:
+          - "ALGORITHMS"
+        requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ordered_list:
+                      type: array
+                      items:
+                        type: number
+                    element:
+                      type: number
+                  required:
+                    - ordered_list
+                    - element
+
+        responses:
+          '200':    # status code
+            description: A JSON with information about the new cleaner list.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    message:
+                      type: string
+                    found::
+                      type: boolean
+          '404':
+            description: Not found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not found
+          '406':
+            description: Not acceptable
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not acceptable
+          '429':
+            description: Too many requests
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Too many requests
+          'default':
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    error_message:
+                      type: string
+                      example: Unexpected error
