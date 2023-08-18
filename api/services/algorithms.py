@@ -153,7 +153,9 @@ def binary_search(ordered_list: list, element) -> bool:
     return binary_search(ordered_list[medio + 1:], element)
 
 def map_function(list_1: list, list_2) -> dict:
-    return dict(map(lambda elemento: (elemento, binary_search(list_1, elemento)), list_2))
+    return dict(map(
+        lambda elemento: (elemento, binary_search(list_1, elemento)), list_2
+        ))
 
 def map_function_workers(list_1: list, list_2: list) -> dict:
 

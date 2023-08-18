@@ -85,3 +85,33 @@ def binary_search(ordered_list: list, element) -> bool:
 ### Endpoint
 
 Like the previous endpoints, in this one the input data is also validated, taking into account that for the algorithm to work it needs a list and an element to search for. As in the endpoint of **Problem 1**, if the list is not ordered, said logic makes sure to order the list before passing it to the algorithm.
+
+## Parallelism Problem
+
+The sequential search has a complexity of O(n) and the binary has a complexity of O(log n), which means that the bigger the search, the sequential will increase its inefficiency and will have an accelerated slope in a performance graph, while the binary will tend to stability growing slowly.
+Because all the problems were solved wanting to give an API perspective, in this last solution about parallelism the workers are calculated from the environment variables defined by the user in the API deployment or simply calculated based on the CPU resources where said API is deployed.
+
+```python
+def map_function(list_1: list, list_2) -> dict:
+    return dict(map(
+        lambda elemento: (elemento, binary_search(list_1, elemento)), list_2
+        ))
+
+def map_function_workers(list_1: list, list_2: list) -> dict:
+
+    pool = multiprocessing.Pool(workers)
+
+    results = pool.starmap(binary_search,
+                           [(list_1, elemento) for elemento in list_2])
+
+    mapping_dict = {
+        list_2[index]: element for index, element in enumerate(results)
+    }
+
+    pool.close()
+    pool.join()
+
+    return mapping_dict
+```
+
+Due to the author's previous analysis, it was decided to create a variant of the mapping function. Sometimes the same common functions cannot be parallelized due to their complexity. Complexity is understood as the way in which it is implemented, for which an exhaustive analysis of it must be done to make it work in a programming environment. parallel

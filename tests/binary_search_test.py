@@ -5,7 +5,7 @@ import pytest
 from api.services.algorithms import binary_search
 from api.schemas.binary_search_schema import binary_search_schema
 from hypothesis import given
-from hypothesis.strategies import lists, integers, floats, text
+from hypothesis.strategies import lists, integers, text
 from tests.conftest import helper
 
 number_list = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
