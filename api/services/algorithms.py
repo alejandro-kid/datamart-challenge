@@ -28,7 +28,7 @@ def merge_arrays_endpoint() -> Response:
             "message": "Successfully merged list",
             "mixed_ordered_list": mixed_ordered_list
         }
-        response = Response(json.dumps(data), 201, mimetype="application/json")
+        response = Response(json.dumps(data), 200, mimetype="application/json")
 
     except jsonschema.exceptions.ValidationError as exc:
         response = Response(str(exc.message), 400, mimetype="application/json")
@@ -64,7 +64,7 @@ def find_median_endpoint() -> Response:
             "message": "Successfully calc",
             "median": median
         }
-        response = Response(json.dumps(data), 201, mimetype="application/json")
+        response = Response(json.dumps(data), 200, mimetype="application/json")
 
     except jsonschema.exceptions.ValidationError as exc:
         response = Response(str(exc.message), 400, mimetype="application/json")

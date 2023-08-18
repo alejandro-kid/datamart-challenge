@@ -28,7 +28,7 @@ def test_merge_arrays_endpoint(client) -> None:
     response_info = helper(response.response)
 
 
-    assert response.status_code == 201
+    assert response.status_code == 200
     assert response.content_type == 'application/json'
     assert response_info["message"] == "Successfully merged list"
     assert response_info["success"] is True
@@ -46,7 +46,7 @@ def test_merge_arrays_endpoint_with_unordered_list(client):
     response_info = helper(response.response)
 
 
-    assert response.status_code == 201
+    assert response.status_code == 200
     assert response.content_type == 'application/json'
     assert response_info["message"] == "Successfully merged list"
     assert response_info["success"] is True

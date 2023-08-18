@@ -18,7 +18,7 @@ def test_median_endpoint(client) -> None:
     response_info = helper(response.response)
 
 
-    assert response.status_code == 201
+    assert response.status_code == 200
     assert response.content_type == 'application/json'
     assert response_info["message"] == "Successfully calc"
     assert response_info["success"] is True
