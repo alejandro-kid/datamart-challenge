@@ -56,3 +56,32 @@ The solution here is simple, the author only uses a data structure of Python lan
 ```python
 filtered_list = set(dirty_list)
 ```
+
+## Problem 8
+
+Given a list of numbers in ascending order and a target number, write a recursive function that finds whether the target number is in the list using a binary search.
+
+### Regular Solution
+
+This algorithm is a well-known algorithm, that works by splitting the list in half at each step and then comparing the target number to the number in the middle. If the target number is equal to the number in between, the function returns True. If the target number is less than the number in the middle, the function calls itself to find the number in the left half of the list. If the target number is greater than the number in the middle, the function calls itself to find the number in the right half of the list. The function continues to split the list in half and compare the target number with the number in the middle until it finds the target number or until it reaches the end of the list.
+
+```python
+def binary_search(ordered_list: list, element) -> bool:
+
+  if len(ordered_list) == 0:
+    return False
+
+  medio = len(ordered_list) // 2
+  if ordered_list[medio] == element:
+    return True
+  elif ordered_list[medio] > element:
+    return binary_search(ordered_list[:medio], element)
+  else:
+    return binary_search(ordered_list[medio + 1:], element)
+```
+
+>Note: For the algorithm to work the list has to be ordered, this is not an implementation problem, it is a characteristic of binary search.
+
+### Endpoint
+
+Like the previous endpoints, in this one the input data is also validated, taking into account that for the algorithm to work it needs a list and an element to search for. As in the endpoint of **Problem 1**, if the list is not ordered, said logic makes sure to order the list before passing it to the algorithm.
