@@ -38,4 +38,18 @@ def test_delete_element():
     assert tree.find(13) is False
 
 
+def test_inorder_tree():
+
+    tree = BinaryTree()
+    tree.insert(8)
+    tree.insert(3)
+    tree.insert(6)
+    tree.insert(1)
+    tree.insert(10)
+    tree.insert(14)
+    tree.insert(13)
+    tree.insert(4)
+    tree.insert(7)
+
+    assert tree.inorder_list() == [1, 3, 4, 6, 7, 8, 10, 13, 14]
 
