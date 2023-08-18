@@ -1,3 +1,5 @@
+[![Python test](https://github.com/alejandro-kid/datamart-challenge/actions/workflows/python-test.yml/badge.svg)](https://github.com/alejandro-kid/datamart-challenge/actions/workflows/python-test.yml)
+
 # Tech Datamart Challenge
 
 The Tech Datamart Challenge is about solving a few problems using your knowledge. To demonstrate my seniority in Python I will solve these problems by adding an endpoint to each solution with its respective validations and tests in an API structure.
