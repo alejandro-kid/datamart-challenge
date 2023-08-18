@@ -194,3 +194,81 @@ paths:
                     error_message:
                       type: string
                       example: Unexpected error
+
+  /remove_duplicates:
+      post:
+        operationId: api.services.algorithms.remove_duplicates_endpoint
+        summary: An endpoint to remove duplicate data.
+        description: Given a data set, the endpoint filters that data and returns a unique data set in that set.
+        tags:
+          - "ALGORITHMS"
+        requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                      type: array
+                  required:
+                    - list
+
+        responses:
+          '200':    # status code
+            description: A JSON with information about the new cleaner list.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    message:
+                      type: string
+                    filtered_list:
+                      type: array
+          '404':
+            description: Not found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not found
+          '406':
+            description: Not acceptable
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Not acceptable
+          '429':
+            description: Too many requests
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Too many requests
+          'default':
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sucess:
+                      type: boolean
+                      example: True
+                    error_message:
+                      type: string
+                      example: Unexpected error
