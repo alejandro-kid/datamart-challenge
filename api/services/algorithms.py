@@ -105,3 +105,47 @@ def remove_duplicates_endpoint() -> Response:
         response = Response(json.dumps(data), 500, mimetype='application/json')
 
     return response
+
+def binary_search_endpoint() -> Response:
+    try:
+        request_data = request.get_json()
+        jsonschema.validate(request_data, merge_arrays_schema)
+
+        ordered_list = request_data["ordered_list"]
+        element = request_data["element"]
+
+        if not is_sorted(ordered_list):
+            ordered_list = sorted(ordered_list)
+
+        found = binary_search(ordered_list, element)
+
+        data = {
+            "success": True,
+            "message": "Successfully searched",
+            "found": found
+        }
+        response = Response(json.dumps(data), 200, mimetype="application/json")
+
+    except jsonschema.exceptions.ValidationError as exc:
+        response = Response(str(exc.message), 400, mimetype="application/json")
+    except Exception as e:
+        data = {
+            "success": False,
+            "error_message": str(e)
+        }
+        response = Response(json.dumps(data), 500, mimetype='application/json')
+
+    return response
+
+def binary_search(ordered_list: list, element) -> bool:
+
+  if len(ordered_list) == 0:
+    return False
+
+  medio = len(ordered_list) // 2
+  if ordered_list[medio] == element:
+    return True
+  elif ordered_list[medio] > element:
+    return binary_search(ordered_list[:medio], element)
+  else:
+    return binary_search(ordered_list[medio + 1:], element)
