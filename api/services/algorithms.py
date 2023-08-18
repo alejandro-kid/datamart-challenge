@@ -1,9 +1,11 @@
 import jsonschema
 import statistics
+import multiprocessing
 
 from api.schemas.merge_arrays_schema import merge_arrays_schema
 from api.schemas.median_schema import median_schema
 from api.schemas.remove_duplicates import remove_duplicates_schema
+from config.gunicorn import workers
 from flask import Response, request, json
 from heapq import merge
 
@@ -149,3 +151,22 @@ def binary_search(ordered_list: list, element) -> bool:
     return binary_search(ordered_list[:medio], element)
   else:
     return binary_search(ordered_list[medio + 1:], element)
+
+def map_function(list_1: list, list_2) -> dict:
+    return dict(map(lambda elemento: (elemento, binary_search(list_1, elemento)), list_2))
+
+def map_function_workers(list_1: list, list_2: list) -> dict:
+
+    pool = multiprocessing.Pool(workers)
+
+    results = pool.starmap(binary_search,
+                           [(list_1, elemento) for elemento in list_2])
+
+    mapping_dict = {
+        list_2[index]: element for index, element in enumerate(results)
+    }
+
+    pool.close()
+    pool.join()
+
+    return mapping_dict
