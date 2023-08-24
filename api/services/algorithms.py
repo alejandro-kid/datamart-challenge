@@ -2,12 +2,22 @@
 import multiprocessing
 
 from config.gunicorn import workers
-from heapq import merge
 
-
-def merge_array(list_1: list, list_2: list) -> list:
-    return list(merge(list_1, list_2))
-
+def binary_insertion_sort_merge(list_1: list, list_2: list) -> tuple:
+    merged_list = tuple(list_1 + list_2)
+    for i in range(1, len(merged_list)):
+        key = merged_list[i]
+        left = 0
+        right = i - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if merged_list[mid] > key:
+                right = mid - 1
+            else:
+                left = mid + 1
+        merged_list = merged_list[:left] + (key,) + merged_list[left:i] + \
+                      merged_list[i+1:]
+    return merged_list
 
 def is_sorted(number_list: list) -> bool:
     return all(a <= b for a, b in zip(number_list, number_list[1:]))

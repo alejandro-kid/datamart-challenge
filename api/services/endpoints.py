@@ -5,7 +5,8 @@ import statistics
 from api.schemas.merge_arrays_schema import merge_arrays_schema
 from api.schemas.median_schema import median_schema
 from api.schemas.remove_duplicates import remove_duplicates_schema
-from api.services.algorithms import merge_array, is_sorted, binary_search
+from api.services.algorithms import binary_insertion_sort_merge
+from api.services.algorithms import is_sorted, binary_search
 from flask import Response, request, json
 
 
@@ -23,7 +24,7 @@ def merge_arrays_endpoint() -> Response:
         if not is_sorted(list_2):
             list_2 = sorted(list_1)
 
-        mixed_ordered_list = merge_array(list_1, list_2)
+        mixed_ordered_list = binary_insertion_sort_merge(list_1, list_2)
 
         data = {
             "success": True,

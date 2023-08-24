@@ -2,7 +2,7 @@ import json
 import jsonschema
 import pytest
 
-from api.services.algorithms import merge_array
+from api.services.algorithms import binary_insertion_sort_merge
 from api.schemas.merge_arrays_schema import merge_arrays_schema
 from hypothesis import given
 from hypothesis.strategies import lists, integers, text, booleans, floats
@@ -14,9 +14,9 @@ unordered = (5, 12, 1, 8, 7, 3, 9, 6, 10, 4)
 
 def test_merge_arrays() -> None:
 
-    mixed_ordered_list = merge_array(ordered_1, ordered_2)
-    assert mixed_ordered_list == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-                                  13, 14, 15, 16, 17, 18, 19, 20]
+    mixed_ordered_list = binary_insertion_sort_merge(ordered_1, ordered_2)
+    assert mixed_ordered_list == (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+                                  13, 14, 15, 16, 17, 18, 19, 20)
 
 def test_merge_arrays_endpoint(client) -> None:
 

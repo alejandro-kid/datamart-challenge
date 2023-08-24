@@ -13,11 +13,24 @@ Write a function called merge_arrays that accepts two sorted arrays of integers 
 #### Regular Solution
 
 ```python
-def merge_array(list_1: list, list_2: list) -> list:
-    return list(merge(list_1, list_2))
+def binary_insertion_sort_merge(list_1: list, list_2: list) -> tuple:
+    merged_list = tuple(list_1 + list_2)
+    for i in range(1, len(merged_list)):
+        key = merged_list[i]
+        left = 0
+        right = i - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if merged_list[mid] > key:
+                right = mid - 1
+            else:
+                left = mid + 1
+        merged_list = merged_list[:left] + (key,) + merged_list[left:i] + \
+                      merged_list[i+1:]
+    return merged_list
 ```
 
-The optimal solution for this problem is to use the **merge** algorithm, this algorithm has a complexity of O(n log n) in ordered lists, has an efficient use of memory and is very quick.
+One of the optimal solutions for this problem is to use the **binary insertion** algorithm, which has a complexity of $O(n log n)$ in ordered lists. Most of the ordered algorithms have the same complexity, but this solution has a spacial complexity of $O(1)$.
 
 #### Endpoint
 
