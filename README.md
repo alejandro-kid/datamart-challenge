@@ -4,6 +4,9 @@
 
 The Tech Datamart Challenge is about solving a few problems using your knowledge. To demonstrate my seniority in Python I will solve these problems by adding an endpoint to each solution with its respective validations and tests in an API structure.
 
+## General solution
+
+The challenge was implemented in a flask environment, with this the author wanted to show his proficiency in a "real" environment of production. All algorithms are implemented in the ```algortihm.py``` file into ```api/services``` folder in the project structure, and tested in multiple files in the ```tests``` folder. In the tests the author used a library called hypothesis to generate a lot of automatic data, this library can execute the same test multiple times with different data to cover multiple scenarios.
 ## Problem 1
 
 Write a function called merge_arrays that accepts two sorted arrays of integers as parameters and returns a single sorted array containing all elements of both.
