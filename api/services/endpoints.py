@@ -1,12 +1,11 @@
 
 import jsonschema
-import statistics
 
 from api.schemas.merge_arrays_schema import merge_arrays_schema
 from api.schemas.median_schema import median_schema
 from api.schemas.remove_duplicates import remove_duplicates_schema
 from api.services.algorithms import binary_insertion_sort_merge
-from api.services.algorithms import is_sorted, binary_search
+from api.services.algorithms import is_sorted, binary_search, median
 from flask import Response, request, json
 
 
@@ -52,12 +51,12 @@ def find_median_endpoint() -> Response:
 
         number_list = request_data["list"]
 
-        median = statistics.median(number_list)
+        median_list = median(number_list)
 
         data = {
             "success": True,
             "message": "Successfully calc",
-            "median": median
+            "median": median_list
         }
         response = Response(json.dumps(data), 200, mimetype="application/json")
 

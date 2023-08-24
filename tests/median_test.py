@@ -1,8 +1,10 @@
 import json
 import jsonschema
 import pytest
+import statistics
 
 from api.schemas.median_schema import median_schema
+from api.services.algorithms import median
 from hypothesis import given
 from hypothesis.strategies import lists, integers, floats, text
 from tests.conftest import helper
@@ -58,3 +60,13 @@ def test_median_schema_for_not_number(not_number_list: list) -> None:
     assert isinstance(number_list, list)
     assert all(isinstance(element, int) for element in number_list)
     jsonschema.validate(td_post_body, median_schema)
+
+@given(lists(elements=integers(), min_size=1, max_size=20))
+def test_median_algorithm_integer(number_list: list) -> None:
+    assert median(number_list) == statistics.median(number_list)
+
+
+@given(lists(elements=floats(allow_nan=False, allow_infinity=False),
+            min_size=1, max_size=20))
+def test_median_algorithm_float(number_list: list) -> None:
+    assert median(number_list) == statistics.median(number_list)

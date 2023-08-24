@@ -4,23 +4,33 @@ import multiprocessing
 from config.gunicorn import workers
 
 def binary_insertion_sort_merge(list_1: list, list_2: list) -> tuple:
-    merged_list = tuple(list_1 + list_2)
-    for i in range(1, len(merged_list)):
-        key = merged_list[i]
-        left = 0
-        right = i - 1
-        while left <= right:
-            mid = (left + right) // 2
-            if merged_list[mid] > key:
-                right = mid - 1
-            else:
-                left = mid + 1
-        merged_list = merged_list[:left] + (key,) + merged_list[left:i] + \
-                      merged_list[i+1:]
-    return merged_list
+  merged_list = tuple(list_1 + list_2)
+  for i in range(1, len(merged_list)):
+      key = merged_list[i]
+      left = 0
+      right = i - 1
+      while left <= right:
+          mid = (left + right) // 2
+          if merged_list[mid] > key:
+              right = mid - 1
+          else:
+              left = mid + 1
+      merged_list = merged_list[:left] + (key,) + merged_list[left:i] + \
+                    merged_list[i+1:]
+  return merged_list
+
+def median(list_1: list) -> float:
+  if ( not is_sorted(list_1)):
+    list_1.sort()
+
+  n = len(list_1)
+  if n % 2 == 1:
+    return list_1[n // 2]
+  else:
+    return (list_1[n // 2] + list_1[n // 2 - 1]) / 2
 
 def is_sorted(number_list: list) -> bool:
-    return all(a <= b for a, b in zip(number_list, number_list[1:]))
+  return all(a <= b for a, b in zip(number_list, number_list[1:]))
 
 
 def binary_search(ordered_list: list, element) -> bool:

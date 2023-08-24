@@ -42,7 +42,19 @@ Write a function called find_median that accepts an array of integers as a param
 
 ### Regular Solution
 
-I am not going to reinvent the wheel, the median of a set of numbers is an operation well-known to all. Python through its **statistics** module (library) provides an implementation of this algorithm in its medium variant of the two in the middle, which has an algorithmic complexity of **O(n)** and is also efficient in terms of resource consumption.
+I am not going to reinvent the wheel, the median of a set of numbers is an operation well-known to all. Python through its **statistics** module (library) provides an implementation of this algorithm in its medium variant of the two in the middle (used in the tests to check if the solution provided by author is correct), which has an algorithmic complexity of **O(n)** and is also efficient in terms of resource consumption. But, here the author solution:
+
+```python
+def median(list_1: list) -> float:
+  if ( not is_sorted(list_1)):
+    list_1.sort()
+
+  n = len(list_1)
+  if n % 2 == 1:
+    return list_1[n // 2]
+  else:
+    return (list_1[n // 2] + list_1[n // 2 - 1]) / 2
+```
 
 ### Endpoint
 
